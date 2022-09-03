@@ -2,12 +2,42 @@ import express from 'express';
 
 const app = express();
 const port = 3000;
+let todos = [
+    {
+        "task": "Complete online JavaScript course",
+        "checked": true
+    },
+    {
+        "task": "Jog around the park 3x",
+        "checked": false
+    },
+    {
+        "task": "10 minutes meditation",
+        "checked": false
+    },
+    {
+        "task": "Read for 1 hour",
+        "checked": false
+    },
+    {
+        "task": "Pick up groceries",
+        "checked": false
+    },
+    {
+        "task": "Complete Todo App on Frontend Mentor",
+        "checked": false
+    }
+]
 
 app.use(express.json());
 
 app.get('/current-time', (req, res) => {
     let date = new Date();
     res.send(`${date.getHours()}:${date.getMinutes()}`);
+});
+
+app.get('/todos', (req, res) => {
+    res.send(todos);
 });
 
 app.post('/sum/:number1/:number2', (req, res) => {
@@ -26,4 +56,4 @@ app.post('/sum/:number1/:number2', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Start listen at http://localhost:${port}`);
-})
+});
