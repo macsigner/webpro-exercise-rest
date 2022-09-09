@@ -1,0 +1,26 @@
+export let todoDemoData = [
+    {
+        "task": "Complete online JavaScript course",
+        "checked": true
+    },
+    {
+        "task": "Jog around the park 3x",
+        "checked": false
+    },
+    {
+        "task": "10 minutes meditation",
+        "checked": false
+    },
+    {
+        "task": "Read for 1 hour",
+        "checked": false
+    },
+    {
+        "task": "Pick up groceries",
+        "checked": false
+    },
+    {
+        "task": "Complete Todo App on Frontend Mentor",
+        "checked": false
+    }
+]
