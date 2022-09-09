@@ -27,16 +27,17 @@ app.get('/current-time', (req, res) => {
 
 app.get('/todos', async (req, res) => {
     let baseQuery = 'SELECT * FROM task';
-    let inserts = [];
+    let result;
 
-    if (req.query) {
-        let queryString = createQueryWhereFromObject(req.query);
+    if (Object.keys(req.query).length > 0) {
+        let queryArray = createQueryWhereFromObject(req.query);
 
-        baseQuery += ' ' + queryString[0];
-        inserts = queryString[1];
+        baseQuery += ' ' + queryArray[0];
+
+        [result] = await connection.execute(baseQuery, queryArray[1]);
+    } else {
+        [result] = await connection.execute(baseQuery);
     }
-
-    const [result] = await connection.execute(baseQuery, inserts);
 
     res.send(result);
 });
